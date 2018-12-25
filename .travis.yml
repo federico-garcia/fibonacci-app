@@ -9,7 +9,7 @@ before_install:
 script:
   - docker run federicogarcia/react-client npm test -- --coverage
 
-after_sucess:
+after_success:
   - docker build -t federicogarcia/fibo-app-client ./client
   - docker build -t federicogarcia/fibo-app-nginx ./nginx
   - docker build -t federicogarcia/fibo-app-server ./server
