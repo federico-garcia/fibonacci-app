@@ -20,3 +20,16 @@ after_success:
   - docker push federicogarcia/fibo-app-nginx
   - docker push federicogarcia/fibo-app-server
   - docker push federicogarcia/fibo-app-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "fibo-app"
+  env: "FiboApp-env"
+  bucket_name: "elasticbeanstalk-us-east-1-510033969879"
+  bucket_path: "fibo-app"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
